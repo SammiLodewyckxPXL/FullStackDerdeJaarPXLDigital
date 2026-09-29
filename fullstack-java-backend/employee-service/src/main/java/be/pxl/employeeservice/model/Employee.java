@@ -29,4 +29,15 @@ public class Employee {
 
     @NotNull
     private Long organizationId;
+
+    public  Employee(){}
+
+    public  Employee(String firstName, String lastName, String email, long departmentId, long organizationId)
+    {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.email=email;
+        this.departmentId = departmentId;
+        this.organizationId=organizationId;
+    }
 }
