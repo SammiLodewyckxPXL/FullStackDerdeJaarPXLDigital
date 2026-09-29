@@ -40,4 +40,28 @@ public class Employee {
         this.departmentId = departmentId;
         this.organizationId=organizationId;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
 }

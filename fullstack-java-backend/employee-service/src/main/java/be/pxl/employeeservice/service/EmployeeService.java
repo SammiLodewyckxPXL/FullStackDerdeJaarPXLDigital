@@ -17,8 +17,7 @@ public class EmployeeService {
 
     public Employee add(Employee employee) {
 //        Employee employee = new Employee(firstName, lastName, email, departmentId, organizationId);
-        _repository.save(employee);
-        return employee;
+        return _repository.save(employee);
     }
 
     public Employee findById(long id) {
