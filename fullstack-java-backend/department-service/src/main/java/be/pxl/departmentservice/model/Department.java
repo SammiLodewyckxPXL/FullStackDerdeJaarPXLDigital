@@ -18,4 +18,24 @@ public class Department {
 
     @NotNull
     private Long organizationId;
+
+    public Department() {
+    }
+
+    public Department(String name, Long organizationId) {
+        this.name = name;
+        this.organizationId = organizationId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
 }

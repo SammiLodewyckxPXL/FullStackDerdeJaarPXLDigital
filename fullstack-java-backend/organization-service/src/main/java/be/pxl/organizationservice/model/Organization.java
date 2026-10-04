@@ -16,4 +16,19 @@ public class Organization {
 
     @NotBlank
     private String name;
+
+    public Organization() {
+    }
+
+    public Organization(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
