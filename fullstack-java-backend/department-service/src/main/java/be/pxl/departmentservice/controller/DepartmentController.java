@@ -2,6 +2,7 @@ package be.pxl.departmentservice.controller;
 
 import be.pxl.departmentservice.model.Department;
 import be.pxl.departmentservice.service.DepartmentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public Department add(@RequestBody Department department) {
+    public Department add(@Valid @RequestBody Department department) {
         return service.add(department);
     }
 

@@ -2,6 +2,7 @@ package be.pxl.employeeservice.controller;
 
 import be.pxl.employeeservice.model.Employee;
 import be.pxl.employeeservice.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class EmployeeController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Employee createNewEmployee(@RequestBody Employee employee) {
+    public Employee createNewEmployee(@Valid @RequestBody Employee employee) {
         return _service.add(employee);
     }
 

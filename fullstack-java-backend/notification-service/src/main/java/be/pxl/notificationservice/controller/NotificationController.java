@@ -1,5 +1,6 @@
 package be.pxl.notificationservice.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class NotificationController {
 
     @PostMapping
-    public String sendNotification(@RequestBody String notification) {
+    public String sendNotification(@Valid @RequestBody String notification) {
         return notification;
     }
 }
