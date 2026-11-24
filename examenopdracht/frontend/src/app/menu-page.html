@@ -1,0 +1,150 @@
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" routerLink="/menu"
+      ><span class="brand-mark">m</span><span>mise<span class="brand-dot">.</span></span></a
+    >
+    <nav class="main-nav">
+      <a class="active" routerLink="/menu">Weekmenu</a
+      ><span class="future-link">Mijn box <small>binnenkort</small></span>
+    </nav>
+    <button class="profile" (click)="signOut()">
+      <span class="avatar">{{
+        auth.role() === 'KLANT' ? 'J' : auth.role() === 'MEDEWERKER' ? 'M' : 'C'
+      }}</span
+      ><span
+        ><strong>{{
+          auth.role() === 'KLANT'
+            ? 'Jamie'
+            : auth.role() === 'MEDEWERKER'
+              ? 'Medewerker'
+              : 'Chauffeur'
+        }}</strong
+        ><small>{{ auth.role() }}</small></span
+      ><span class="chevron">⌄</span>
+    </button>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">
+          <span class="sparkle">✳</span> VERS VAN DEZE WEEK
+          <span class="week-label">WEEK 48 · 24–30 NOV</span>
+        </p>
+        <h1>Een week vol<br /><em>goede smaak.</em></h1>
+        <p class="intro">
+          Kies waar je zin in hebt. Wij brengen de ingrediënten en het recept tot aan je deur.
+        </p>
+        <div class="hero-meta">
+          <span><b>↗</b> {{ recipes().length }} recepten</span><span class="meta-separator"></span
+          ><span>Elke week vers gekozen</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="art-sun"></div>
+        <div class="art-leaf leaf-one"></div>
+        <div class="art-leaf leaf-two"></div>
+        <div class="art-tomato">✿</div>
+        <div class="art-label">goed<br />gekozen<span>✳</span></div>
+        <div class="art-note">SEIZOENSKEUKEN<br /><b>NO. 048</b></div>
+      </div>
+    </section>
+    <section class="menu-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow muted">HET MENU</p>
+          <h2>Wat eten we deze week?</h2>
+        </div>
+        <span class="availability"><i></i> Menu beschikbaar tot zondag</span>
+      </div>
+      <div class="controls">
+        <label class="search-box"
+          ><span>⌕</span
+          ><input
+            aria-label="Zoek een gerecht"
+            placeholder="Zoek een gerecht of ingrediënt"
+            [value]="search()"
+            (input)="search.set($any($event.target).value)"
+          /><kbd>⌘ K</kbd></label
+        >
+        <div class="filters">
+          @for (item of categories; track item) {
+            <button [class.chosen]="category() === item" (click)="category.set(item)">
+              {{ item }}
+            </button>
+          }
+        </div>
+      </div>
+      <div class="recipe-grid">
+        @for (recipe of visibleRecipes(); track recipe.id; let index = $index) {
+          <article class="recipe-card">
+            <div class="recipe-image" [class]="'recipe-image ' + recipe.image">
+              <span class="dish-emoji">{{
+                recipe.category === 'Vis'
+                  ? '🐟'
+                  : recipe.category === 'Vlees'
+                    ? '🍗'
+                    : index % 2
+                      ? '🥗'
+                      : '🍝'
+              }}</span
+              ><span class="dish-index">0{{ index + 1 }}</span>
+              @if (recipe.tags.includes('Favoriet')) {
+                <span class="favorite-tag">FAVORIET</span>
+              }
+              <button
+                class="save-button"
+                [class.saved]="selected().includes(recipe.id)"
+                (click)="toggleRecipe(recipe.id)"
+                [attr.aria-label]="
+                  selected().includes(recipe.id) ? 'Verwijder selectie' : 'Selecteer recept'
+                "
+              >
+                {{ selected().includes(recipe.id) ? '✓' : '+' }}
+              </button>
+            </div>
+            <div class="recipe-body">
+              <div class="recipe-type">
+                {{ recipe.category }} <span>·</span> {{ recipe.tags[0] }}
+              </div>
+              <h3>{{ recipe.name }}</h3>
+              <p class="description">{{ recipe.description }}</p>
+              <div class="recipe-details">
+                <span>◷ &nbsp;{{ recipe.prepTimeMinutes }} min</span
+                ><span>♧ &nbsp;{{ recipe.servings }} personen</span>
+              </div>
+              <div class="allergens">
+                <span>ALLERGENEN</span>
+                @if (recipe.allergens.length) {
+                  {{ recipe.allergens.join(' · ') }}
+                } @else {
+                  <i>Geen</i>
+                }
+              </div>
+            </div>
+          </article>
+        } @empty {
+          <div class="empty-state">
+            <span>⌕</span>
+            <h3>Geen gerechten gevonden</h3>
+            <p>Probeer een andere zoekterm of filter.</p>
+          </div>
+        }
+      </div>
+      <p class="menu-footnote">
+        <span>✳</span> Onze recepten wisselen mee met het seizoen. Allergeneninformatie vind je
+        altijd bij elk gerecht.
+      </p>
+    </section>
+  </main>
+  @if (selected().length) {
+    <aside class="selection-toast">
+      <span class="selection-icon">✓</span
+      ><span
+        ><strong
+          >{{ selected().length }}
+          {{ selected().length === 1 ? 'gerecht' : 'gerechten' }} geselecteerd</strong
+        ><small>Bestellen komt binnenkort beschikbaar</small></span
+      ><button (click)="selected.set([])" aria-label="Wis selectie">×</button>
+    </aside>
+  }
+</div>

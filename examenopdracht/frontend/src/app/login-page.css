@@ -1,0 +1,246 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+.login-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  background: #faf9f6;
+}
+.login-story {
+  position: relative;
+  overflow: hidden;
+  background: #e9ece1;
+  padding: 37px 8vw;
+  display: flex;
+  flex-direction: column;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #293d2d;
+  text-decoration: none;
+  font:
+    700 22px Georgia,
+    serif;
+  letter-spacing: -1px;
+}
+.brand-mark {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #294a38;
+  color: #f5f0e2;
+  display: grid;
+  place-items: center;
+  font: italic 22px Georgia;
+}
+.brand-dot {
+  color: #cf784e;
+  margin-left: -10px;
+}
+.story-content {
+  position: relative;
+  z-index: 1;
+  margin: auto 0;
+}
+.eyebrow {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 0.17em;
+  color: #718167;
+}
+.story-content h1 {
+  font:
+    400 clamp(44px, 5vw, 68px)/0.99 Georgia,
+    serif;
+  letter-spacing: -2px;
+  color: #2d3c2e;
+  margin: 20px 0;
+}
+.story-content h1 em {
+  color: #70835d;
+}
+.story-content > p:last-child {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #767c70;
+  max-width: 340px;
+}
+.story-art {
+  position: absolute;
+  right: 9%;
+  bottom: 16%;
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+  background: #d5d9c6;
+  display: grid;
+  place-items: center;
+}
+.story-sun {
+  position: absolute;
+  inset: 24px;
+  border-radius: 50%;
+  background: #eabc76;
+}
+.story-art span {
+  position: relative;
+  color: #71905f;
+  font-size: 95px;
+  text-shadow: 9px 14px 0 #bd6a4d;
+  transform: rotate(-14deg);
+}
+.story-art small {
+  position: absolute;
+  bottom: -20px;
+  left: 13px;
+  font-size: 8px;
+  line-height: 1.8;
+  letter-spacing: 0.13em;
+  color: #65715c;
+}
+.login-story footer {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: #82887a;
+}
+.login-panel {
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+.login-card {
+  width: min(390px, 100%);
+}
+.login-card h2 {
+  font:
+    400 31px Georgia,
+    serif;
+  letter-spacing: -0.7px;
+  color: #30382e;
+  margin: 10px 0;
+}
+.subtext {
+  font-size: 12px;
+  color: #898b82;
+  margin: 0 0 26px;
+}
+.role-list {
+  display: grid;
+  gap: 10px;
+}
+.role-choice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  border: 1px solid #e9e8e1;
+  background: #fff;
+  border-radius: 4px;
+  padding: 15px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.role-choice:hover {
+  border-color: #819376;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px #293d2d0d;
+}
+.role-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #edf0e7;
+  color: #657d56;
+  font-size: 18px;
+}
+.role-label {
+  margin-left: 13px;
+}
+.role-label strong,
+.role-label small {
+  display: block;
+}
+.role-label strong {
+  font-size: 12px;
+  color: #384036;
+}
+.role-label small {
+  font-size: 10px;
+  color: #92948a;
+  margin-top: 4px;
+}
+.arrow {
+  margin-left: auto;
+  color: #839079;
+  font-size: 17px;
+}
+.login-note {
+  display: flex;
+  gap: 10px;
+  margin-top: 23px;
+  padding: 13px;
+  background: #f1f1ea;
+  border-radius: 3px;
+  color: #78806f;
+}
+.login-note span {
+  font-size: 14px;
+}
+.login-note p {
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0;
+}
+.login-bottom {
+  text-align: center;
+  margin-top: 27px;
+  font-size: 9px;
+  color: #9b9c93;
+}
+.login-bottom span {
+  padding: 0 7px;
+  color: #c5c5bc;
+}
+@media (max-width: 750px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+  }
+  .login-story {
+    min-height: 38vh;
+    padding: 23px 26px;
+  }
+  .story-content {
+    margin: 45px 0 25px;
+  }
+  .story-content h1 {
+    font-size: 46px;
+  }
+  .story-art {
+    width: 130px;
+    height: 130px;
+    right: 8%;
+    bottom: 10%;
+  }
+  .story-art span {
+    font-size: 60px;
+  }
+  .story-art small,
+  .login-story footer {
+    display: none;
+  }
+  .login-panel {
+    padding: 35px 24px;
+  }
+  .login-card {
+    max-width: 440px;
+  }
+}

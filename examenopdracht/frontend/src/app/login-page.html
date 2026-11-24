@@ -1,0 +1,41 @@
+<main class="login-layout">
+  <section class="login-story">
+    <a class="brand"><span class="brand-mark">m</span> mise<span class="brand-dot">.</span></a>
+    <div class="story-content">
+      <p class="eyebrow">GOED ETEN, GOED GEVOEL</p>
+      <h1>De mooiste<br />maaltijden<br /><em>beginnen hier.</em></h1>
+      <p>Seizoensrecepten, verse ingrediënten en een beetje inspiratie. Fijn dat je er bent.</p>
+    </div>
+    <div class="story-art">
+      <div class="story-sun"></div>
+      <span>✿</span><small>VERS GEKOZEN<br />ELKE WEEK</small>
+    </div>
+    <footer>MET ZORG GEKOZEN · MET LIEFDE GEKOOKT</footer>
+  </section>
+  <section class="login-panel">
+    <div class="login-card">
+      <p class="eyebrow">WELKOM BIJ MISE</p>
+      <h2>Wie ben je vandaag?</h2>
+      <p class="subtext">Kies een rol om verder te gaan.</p>
+      <div class="role-list">
+        @for (role of roles; track role.id) {
+          <button class="role-choice" (click)="enter(role.id)">
+            <span class="role-icon">{{ role.icon }}</span
+            ><span class="role-label"
+              ><strong>{{ role.label }}</strong
+              ><small>{{ role.detail }}</small></span
+            ><span class="arrow">→</span>
+          </button>
+        }
+      </div>
+      <div class="login-note">
+        <span>✳</span>
+        <p>
+          Dit is een demo-omgeving. Je keuze wordt alleen gebruikt om de verschillende schermen te
+          bekijken.
+        </p>
+      </div>
+      <div class="login-bottom">Geen wachtwoord nodig <span>·</span> Demo login</div>
+    </div>
+  </section>
+</main>
